@@ -22,7 +22,11 @@ class SQLite {
         }
     }
 
-    function createTable($table) {
+    public function createTableBySQL($str) {
+        $this->database->exec($str);
+    }
+    
+    public function createTable($table) {
         $sTable = 'CREATE TABLE IF NOT EXISTS ' . $table->name . ' (';
         $sFields = '';
         foreach ($table->fields as $f) {
@@ -37,7 +41,7 @@ class SQLite {
         $this->database->exec($sTable);
     }
 
-    function insert($table, $array) {
+    public function insert($table, $array) {
         try {
             $sColumns = implode(',', array_keys($array));
             $sValues = implode(',', array_fill(0, count($array), '?'));
