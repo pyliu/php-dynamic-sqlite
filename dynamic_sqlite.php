@@ -13,7 +13,7 @@ class SQLite {
         $this->databaseName = $databaseName;
     }
 
-    public function initdatabase() {
+    public function initDB() {
         try {
             $this->database = new PDO('sqlite:' . $this->databaseName);
             $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
